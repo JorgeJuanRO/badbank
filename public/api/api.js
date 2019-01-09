@@ -1,9 +1,19 @@
 
 function create() {
-    // -------------------------------------
-    //  YOUR CODE
-    //  Create user account on server
-    // -------------------------------------    
+    var name     = document.getElementById('name').value;
+    var email    = document.getElementById('email').value;
+    var password = document.getElementById('password').value;    
+    var url = '/account/create/' + name + '/' + email + '/' + password;
+
+    superagent
+        .get(url)
+        .end(function(err, res){
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(res.txt);
+            }
+        });
 }
 
 function login() {
